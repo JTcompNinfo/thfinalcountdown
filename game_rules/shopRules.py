@@ -78,6 +78,4 @@ def shop(player):
                 print(f"Sold {item.name}")
 
         except ValueError:
-            print("Invalid choice")
-
-            
+            print("Invalid choice")       

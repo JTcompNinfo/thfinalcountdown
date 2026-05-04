@@ -187,6 +187,3 @@ luster5 = Enemy("", random.randint(25, 35), random.randint(3,7), random.randint(
 # Layer 8 attackers
 
 # Layer 9 attackers
-
-
-

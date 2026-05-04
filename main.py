@@ -4,7 +4,13 @@ Important imports
 import sys
 import os
 import subprocess
-import pyfiglet
+import random
+try:
+    import pyfiglet
+except ImportError:
+    print("pyfiglet not found. Installing...")
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "pyfiglet", "--break-system-packages"])
+    import pyfiglet
 
 import shutil
 
@@ -20,12 +26,16 @@ godplayer = NpcAndPlayerRules.Player("god", 1000000)
 
 
 def open_image(filepath):
-    if sys.platform == "win32":
-        os.startfile(filepath)
-    elif sys.platform == "darwin":
-        subprocess.run(["open", filepath])
-    else:  # linux and other unix
-        subprocess.run(["xdg-open", filepath])
+    try:
+        if sys.platform == "win32":
+            os.startfile(filepath)
+        elif sys.platform == "darwin":
+            subprocess.run(["open", filepath])
+        else:
+            subprocess.run(["xdg-open", filepath], check=True)
+    except (FileNotFoundError, OSError):
+        print("Baller.jpeg can not open here")
+        pass  # No display available (e.g. Codespaces), just skip it
 
 
 def claer_termianl(player):
@@ -51,7 +61,12 @@ class ScreenManager:
             self.last_screen()
 
 def randomecounter(player):
-    randomEccointers.randomEccounter
+    LOOPMAX = random.randint(1, 30)
+    loopyloop = 0
+    while loopyloop != LOOPMAX:
+        randomEccointers.randomEccounter
+        claer_termianl
+        loopyloop += 1
 
  
 def print_inferno_map(player):
@@ -148,6 +163,7 @@ def gamestart():
     claer_termianl(godplayer)
     name = input("Enter a Name for your character:\n")
     main_player = NpcAndPlayerRules.Player(name, 20) 
+    main_player.inventory.append("Ball of Baller")
     layer1(main_player)
     
 
@@ -195,5 +211,3 @@ def start_screen():
 
 if __name__ == "__main__":
     start_screen()
-
-

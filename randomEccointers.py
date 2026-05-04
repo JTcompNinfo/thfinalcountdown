@@ -1,7 +1,13 @@
 from main import claer_termianl
-from game_rules import NpcAndPlayerRules
 import random
+from game_rules import NpcAndPlayerRules
+from game_rules import combatRules
+from game_rules import shopRules
 #Layer 1 Enccounters
+def shopNormal(player):
+    shopRules.generate_shop(player.stage)
+def opShop(player):
+    shopRules.generate_shop(random.randint(player.stage, 9))
 
 #Layer 2 Enccounters
 
