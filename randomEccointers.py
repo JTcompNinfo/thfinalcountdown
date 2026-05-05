@@ -8,6 +8,8 @@ def shopNormal(player):
     shopRules.generate_shop(player.stage)
 def opShop(player):
     shopRules.generate_shop(random.randint(player.stage, 9))
+def guideguy(player):
+    
 
 #Layer 2 Enccounters
 
